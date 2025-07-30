@@ -201,7 +201,10 @@ public final class FarmProcess extends BaritoneProcessHelper implements IFarmPro
     }
 
     @Override
-    public PathingCommand onTick(boolean calcFailed, boolean isSafeToCancel) {
+    public PathingCommand onTick(boolean calcFailed, boolean isSafeToCancel) 
+        if (Minecraft.getInstance().screen != null) {
+            return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
+        }
         if (Baritone.settings().mineGoalUpdateInterval.value != 0 && tickCount++ % Baritone.settings().mineGoalUpdateInterval.value == 0) {
             ArrayList<Block> scan = new ArrayList<>();
             for (Harvest harvest : Harvest.values()) {

@@ -55,6 +55,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.client.Minecraft;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -201,7 +202,7 @@ public final class FarmProcess extends BaritoneProcessHelper implements IFarmPro
     }
 
     @Override
-    public PathingCommand onTick(boolean calcFailed, boolean isSafeToCancel) 
+    public PathingCommand onTick(boolean calcFailed, boolean isSafeToCancel) {
         if (Minecraft.getInstance().screen != null) {
             return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
         }
